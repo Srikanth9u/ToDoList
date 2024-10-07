@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container{
+            display: flex;
+            background-color: rgb(58, 189, 222);
+            width: 20%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            
+        }
+        button{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="itemInput" placeholder="Enter Name">
+    <input type="text" id="itemInput2" placeholder="age">
+    <button id="addItembutton">Add Item</button>
+    
+    <div class="flex-container">
+        <div><ul id="itemList"></ul></div>
+            
+        <div><ul id="itemList2"></ul></div>
+        <div><ul id="itemlist3"></ul></div>
+    </div>
+    <!-- <button onclick="remove()">Delete</button> -->
+   
+
+    <script>
+        
+        let but = document.getElementById("itemInput");
+        let but2=document.getElementById("itemInput2");
+        let button = document.getElementById("addItembutton");
+        let itemlist = document.getElementById("itemList");
+        let itemlist2=document.getElementById("itemList2");
+        button.addEventListener('click', function() {
+        if (but.value.trim() !== "" && but2.value.trim() != "") {
+            let newItem = document.createElement('li');
+            let newItem2 = document.createElement('li');
+            
+            newItem.textContent = but.value;
+            newItem2.textContent = but2.value;
+            itemlist.appendChild(newItem);
+            itemlist2.appendChild(newItem2);
+            itemlist3.appendChild(delButton);
+            but.value = ""; 
+            but2.value= "";
+            }
+        });
+        let delButton = document.createElement("button");
+        delButton.textContent="x";
+        delButton.addEventListener('click',function(){
+            const list=document.getElementById("itemList");
+            const list2=document.getElementById("itemList2");
+            if(list.hasChildNodes() && list2.hasChildNodes()){
+                list.removeChild(list.children[0]);
+                list2.removeChild(list2.children[0]);
+            }
+        });
+        
+    </script>
+</body>
+</html>
